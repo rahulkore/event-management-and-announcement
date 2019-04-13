@@ -1,0 +1,212 @@
+<html>
+    <head>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;background-image: url("clg.jpg");}
+* {box-sizing: border-box;}
+/* register wala button */
+button {
+    background-color: red;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+}
+button:hover {
+    opacity:1.5;
+}
+/*input fields*/
+input[type=text], input[type=date], input[type=tel], input[type=email] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+input[type=radio] {
+    margin: 5px 5px 5px 15px;
+}
+select{
+	width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+
+.cancelbtn {
+    padding: 14px 20px;
+    background-color: #f44336;
+}
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+.container {
+    padding: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+
+    padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color:aqua;
+    margin: 5% auto 15% auto;
+    border: 1px solid #888;
+    width: 50%;
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+    color: #f44336;
+    cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+</style>
+<title>EVENT | REGISTER </title>
+</head>
+<body>
+<div id="id01" class="modal">
+  <a href="index.php" class="href">
+    <span onclick="document.getElementById('id01')" class="close" title="Close Form">&times;</span></a>
+  <form name="reg" class="modal-content" action="/action_page.php" Onsubmit="return validate()">
+    <div class="container">
+      <h1>Registration form</h1>
+      <p>Please fill in this form to register for this event.</p>
+      <hr>
+
+	  <label for="name"><b>Name</b></label>
+      <input type="text" placeholder="Enter Name" name="name" required>
+
+	  <label for="rollno"><b>Roll Number</b></label>
+      <input type="text" placeholder="Enter Roll Number" name="rollno" required>
+
+	  <label for="year"><b>Year</b></label><br>
+      <select name="year">
+          <option value="none">Select Year</option>
+          <option value="fe">FE</option>
+          <option value="se">SE</option>
+          <option value="te">TE</option>
+		  <option value="be">BE</option>
+      </select>
+
+	  <label for="branch"><b>Branch</b></label><br>
+	  <select name="branch">
+          <option value="none">Select Branch</option>
+          <option value="cmpn">CMPN</option>
+          <option value="inft">INFT</option>
+          <option value="etrx">ETRX</option>
+		  <option value="extc">EXTC</option>
+          <option value="biomed">BIOMED</option>
+      </select>
+
+	  <label for="division"><b>Division</b></label><br>
+      <select name="division">
+          <option value="none">Select Division</option>
+          <option value="a">A</option>
+          <option value="b">B</option>
+          <option value="c">C</option>
+      </select>
+
+	  <label for="gender"><b>Gender</b></label><br>
+      <input type="radio" name="gender" > Male<br>
+      <input type="radio" name="gender" > Female<br>
+      <input type="radio" name="gender" > Other<br><br>
+
+	  <label for="dob"><b>Date of birth</b></label><br>
+      <input type="date" name="dob" >
+
+      <label for="phoneno"><b>Phone No</b></label><br>
+      <input type="tel" placeholder="Enter Phone no." name="phoneno"  pattern="[0-9]{10}" required>
+
+      <label for="email"><b>Email</b></label>
+      <input type="email" placeholder="Enter Email" name="email" required>
+      <label for="Committee"><b>VIT-Committee</b></label><br>
+      <select name="division">
+          <option value="none">Select committee</option>
+          <option value="csi">CSI-VIT</option>
+          <option value="cesa">CESA-VIT</option>
+          <option value="ieee">IEEE-VIT</option>
+      </select>
+
+      <p>By registering for an event you agree to our <a href="#" style="color:dodgerblue">Terms & Conditions</a>.</p>
+
+      <div class="clearfix">
+            <a href="index.php"><button type="button" class="cancelbtn">Cancel</button></a>
+        <button type="submit" class="signupbtn" style="background-color: green;">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script type="text/javascript">
+function validate()
+{
+  if(reg.year.selectedIndex==0)
+  {
+    alert("Please select your year");
+    return false;
+  }
+  if(reg.branch.selectedIndex==0)
+  {
+    alert("Please select your branch");
+    return false;
+  }
+  if(reg.division.selectedIndex==0)
+  {
+    alert("Please select your division");
+    return false;
+  }
+  if(reg.gender[0].checked==false && reg.gender[1].checked==false && reg.gender[2].checked==false)
+  {
+    alert("Please select a gender");
+    return false;
+  }
+  if(reg.dob.value=="")
+  {
+    alert("Please enter the date");
+    return false;
+  }
+  return true;
+}
+</script>
+</body>
+</html>
